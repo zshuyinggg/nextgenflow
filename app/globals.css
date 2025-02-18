@@ -55,7 +55,7 @@ body {
     @apply bg-primary text-white font-semibold py-2 px-6 rounded-full hover:bg-primary/90 transition duration-300 shadow-lg;
   }
   .btn-secondary {
-    @apply bg-transparent text-white font-semibold py-2 px-6 rounded-full border-2 border-white hover:bg-white hover:text-primary transition duration-300 shadow-lg;
+    @apply bg-transparent text-white font-semibold py-2 px-6 rounded-full border-2 border-white hover:bg-white/20 hover:text-white transition duration-300 shadow-lg;
   }
 }
 
