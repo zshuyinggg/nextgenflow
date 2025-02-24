@@ -1,4 +1,10 @@
 export async function onRequest(context) {
+  // Add debug logging
+  console.log('Context:', {
+    env: Object.keys(context.env),
+    hasKV: !!context.env.NEWSLETTER_SUBSCRIBERS,
+  });
+
   // Handle CORS preflight requests
   if (context.request.method === "OPTIONS") {
     return new Response(null, {
@@ -25,6 +31,11 @@ export async function onRequest(context) {
     const formData = await context.request.formData();
     const email = formData.get('email');
     console.log('Received email:', email);
+
+    // Debug KV binding
+    if (!context.env.NEWSLETTER_SUBSCRIBERS) {
+      throw new Error('KV binding NEWSLETTER_SUBSCRIBERS is not defined');
+    }
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,7 +67,12 @@ export async function onRequest(context) {
     console.error('Server error:', error);
     return new Response(JSON.stringify({ 
       error: 'Server error', 
-      details: error.message 
+      details: error.message,
+      // Add debug info
+      context: {
+        env: Object.keys(context.env),
+        hasKV: !!context.env.NEWSLETTER_SUBSCRIBERS,
+      }
     }), {
       status: 500,
       headers: { 
