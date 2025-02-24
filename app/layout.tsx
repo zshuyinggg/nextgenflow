@@ -3,10 +3,11 @@ import { Inter } from "next/font/google"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import type { ReactNode } from "react"
+import type { Metadata } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "NextGenFlow - AI and Software Solutions",
   description: "Customized AI and software solutions to optimize workflows for small- to medium-sized businesses.",
     generator: 'v0.dev'
