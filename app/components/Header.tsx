@@ -26,12 +26,15 @@ const Header = () => {
             NextGenFlow
           </Link>
           <div className="hidden md:flex space-x-6">
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="/services">Services</NavLink>
-            <NavLink href="/use-cases">Use Cases</NavLink>
-            <NavLink href="/blog">Blog</NavLink>
-            <NavLink href="/about">About Us</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+            <Link href="/services" className="text-white hover:text-primary transition-colors">
+              Services & Use Cases
+            </Link>
+            <Link href="/about" className="text-white hover:text-primary transition-colors">
+              About
+            </Link>
+            <Link href="/contact" className="text-white hover:text-primary transition-colors">
+              Contact
+            </Link>
           </div>
           <button className="md:hidden focus:outline-none" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <svg

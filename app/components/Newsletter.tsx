@@ -15,12 +15,13 @@ export default function Newsletter() {
       const formData = new FormData()
       formData.append('email', email)
 
-      const response = await fetch('/functions/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         body: formData,
       })
 
       const data = await response.json()
+      console.log('Response:', data)
 
       if (response.ok) {
         setStatus('success')
@@ -31,6 +32,7 @@ export default function Newsletter() {
         setMessage(data.error || 'Something went wrong')
       }
     } catch (error) {
+      console.error('Error:', error)
       setStatus('error')
       setMessage('Failed to subscribe. Please try again.')
     }
