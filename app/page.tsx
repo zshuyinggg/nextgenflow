@@ -122,7 +122,7 @@ export default function Home() {
       <Testimonials />
 
       {/* Call to Action */}
-      <section className="py-20 bg-primary text-white relative overflow-hidden">
+      <section className="py-20 bg-card-bg text-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
@@ -138,7 +138,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-background opacity-10 rounded-tr-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-primary/20 rounded-tr-full filter blur-3xl"></div>
       </section>
 
       {/* Newsletter Section */}

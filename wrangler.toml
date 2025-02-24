@@ -1,5 +1,6 @@
 name = "nextgenflow"
 compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 
 kv_namespaces = [
   { binding = "NEWSLETTER_SUBSCRIBERS", id = "b5cc7c53fd4345c3859981fca1d39517" }
