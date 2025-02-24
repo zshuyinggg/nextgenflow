@@ -16,8 +16,8 @@ export default function Newsletter() {
       const formData = new FormData()
       formData.append('email', email)
 
-      console.log('Sending request to /api/subscribe')
-      const response = await fetch('/api/subscribe', {
+      console.log('Sending request to /subscribe')
+      const response = await fetch('/subscribe', {
         method: 'POST',
         body: formData,
       })
