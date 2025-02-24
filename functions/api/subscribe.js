@@ -1,16 +1,18 @@
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
+    
+    // Log the request
+    console.log('Received request:', request.method);
+    
     const formData = await request.formData();
     const email = formData.get('email');
-
-    // Add debugging logs
     console.log('Received email:', email);
-    console.log('KV namespace:', env.NEWSLETTER_SUBSCRIBERS);
 
     // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
+      console.log('Invalid email format');
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
         headers: { 
@@ -20,7 +22,8 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Store email in KV
+    // Store in KV
+    console.log('Storing email in KV');
     await env.NEWSLETTER_SUBSCRIBERS.put(email, JSON.stringify({
       subscribed: new Date().toISOString(),
     }));
@@ -29,15 +32,21 @@ export async function onRequestPost(context) {
     const stored = await env.NEWSLETTER_SUBSCRIBERS.get(email);
     console.log('Stored data:', stored);
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ 
+      success: true,
+      message: 'Successfully subscribed!'
+    }), {
       headers: { 
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
     });
   } catch (error) {
-    console.error('Error:', error);
-    return new Response(JSON.stringify({ error: 'Server error', details: error.message }), {
+    console.error('Server error:', error);
+    return new Response(JSON.stringify({ 
+      error: 'Server error', 
+      details: error.message 
+    }), {
       status: 500,
       headers: { 
         'Content-Type': 'application/json',

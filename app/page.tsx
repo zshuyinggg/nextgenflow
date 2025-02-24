@@ -23,10 +23,10 @@ export default function Home() {
                 businesses.
               </p>
               <div className="flex space-x-4">
-                <Link href="#services" className="btn-primary">
+                <Link href="#services" className="btn-secondary">
                   Services & Use Cases
                 </Link>
-                <Link href="https://calendly.com/zhusy1997/free-consultation" className="btn-secondary">
+                <Link href="https://calendly.com/zhusy1997/free-consultation" className="btn-primary">
                   Book a Free Consultation
                 </Link>
               </div>
@@ -261,10 +261,10 @@ export default function Home() {
               standards.
             </p>
             <Link
-              href="/contact"
-              className="bg-white/20 text-white font-semibold py-2 px-6 rounded-full hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg border border-white/50"
+              href="https://calendly.com/zhusy1997/free-consultation"
+              className="bg-primary text-white font-semibold py-3 px-8 rounded-full hover:bg-opacity-90 hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Start Your Journey
+              Book a Free Consultation
             </Link>
           </div>
         </div>
