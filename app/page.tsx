@@ -132,7 +132,7 @@ export default function Home() {
             </p>
             <Link
               href="/contact"
-              className="btn-secondary bg-white text-primary hover:bg-opacity-90 hover:text-primary"
+              className="bg-white/20 text-white font-semibold py-2 px-6 rounded-full hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg border border-white/50"
             >
               Start Your Journey
             </Link>
