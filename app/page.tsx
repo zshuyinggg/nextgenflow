@@ -248,8 +248,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <Testimonials />
+      {/* Testimonials Section
+      <Testimonials /> */}
 
       {/* Call to Action */}
       <section className="py-20 bg-card-bg text-white relative overflow-hidden">

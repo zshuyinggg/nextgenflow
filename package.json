@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "messages": "wrangler kv:key list --namespace-id=db3e26f95c4d4f45850825c2893fef21 --prefix=contact_",
+    "message:get": "wrangler kv:key get --namespace-id=db3e26f95c4d4f45850825c2893fef21"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
