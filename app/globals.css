@@ -3,13 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --primary: #4a90e2;
-  --secondary: #64b5f6;
-  --accent: #ff6b6b;
   --background: #0a0a1e;
+  --card-bg: #16213e;
+  --primary: #4a90e2;
+  --primary-foreground: #ffffff;
+  --secondary: #64b5f6;
+  --secondary-foreground: #ffffff;
   --text: #ffffff;
   --text-secondary: #a0aec0;
-  --card-bg: #16213e;
+  --muted: #374151;
+  --muted-foreground: #9ca3af;
+  --accent: #ff6b6b;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #1f2937;
+  --input: #1f2937;
+  --ring: #4a90e2;
+  --radius: 0.5rem;
+  --popover: #1f2937;
+  --popover-foreground: #ffffff;
+  --card: #16213e;
+  --card-foreground: #ffffff;
 }
 
 @keyframes float {
@@ -52,8 +67,9 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white font-semibold py-2 px-6 rounded-full hover:bg-primary/90 transition duration-300 shadow-lg;
+    @apply bg-primary text-white font-semibold py-2 px-6 rounded-full hover:bg-opacity-90 transition duration-300 shadow-lg;
   }
+  
   .btn-secondary {
     @apply bg-transparent text-white font-semibold py-2 px-6 rounded-full border-2 border-white hover:bg-white hover:text-primary transition duration-300 shadow-lg;
   }
@@ -66,8 +82,8 @@ main {
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
 }
 
 html {

@@ -2,23 +2,47 @@
 
 import { useState } from "react"
 
-const Newsletter = () => {
+export default function Newsletter() {
   const [email, setEmail] = useState("")
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement newsletter signup logic
-    console.log("Newsletter signup:", email)
-    setEmail("")
+    setStatus('loading')
+
+    try {
+      const formData = new FormData()
+      formData.append('email', email)
+
+      const response = await fetch('/functions/subscribe', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatus('success')
+        setMessage('Thank you for subscribing!')
+        setEmail('')
+      } else {
+        setStatus('error')
+        setMessage(data.error || 'Something went wrong')
+      }
+    } catch (error) {
+      setStatus('error')
+      setMessage('Failed to subscribe. Please try again.')
+    }
   }
 
   return (
-    <div className="bg-card-bg py-20">
+    <section className="py-20 bg-card-bg">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <h3 className="text-3xl font-semibold mb-6">Stay Ahead of the Curve</h3>
-          <p className="mb-8 text-text-secondary">
-            Subscribe to our newsletter for cutting-edge insights on AI and software solutions.
+          <h2 className="text-4xl font-bold mb-6">Stay Updated</h2>
+          <p className="text-text-secondary mb-8">
+            Subscribe to our newsletter for the latest updates on AI technology and business solutions.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
             <input
@@ -26,18 +50,25 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="flex-grow p-3 rounded-full bg-background text-text border border-text-secondary focus:outline-none focus:border-primary"
+              className="flex-grow px-6 py-3 rounded-lg bg-background text-text border border-primary/20 focus:border-primary focus:outline-none"
               required
             />
-            <button type="submit" className="btn-primary sm:w-auto">
-              Subscribe
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="btn-primary disabled:opacity-50"
+            >
+              {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
           </form>
+          {status !== 'idle' && (
+            <p className={`mt-4 ${status === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+              {message}
+            </p>
+          )}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
-
-export default Newsletter
 
