@@ -29,9 +29,6 @@ const Header = () => {
             <Link href="/services" className="text-white hover:text-primary transition-colors">
               Services & Use Cases
             </Link>
-            <Link href="/about" className="text-white hover:text-primary transition-colors">
-              About
-            </Link>
             <Link href="/contact" className="text-white hover:text-primary transition-colors">
               Contact
             </Link>
@@ -53,10 +50,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 space-y-2">
             <MobileNavLink href="/">Home</MobileNavLink>
-            <MobileNavLink href="/services">Services</MobileNavLink>
-            <MobileNavLink href="/use-cases">Use Cases</MobileNavLink>
-            <MobileNavLink href="/blog">Blog</MobileNavLink>
-            <MobileNavLink href="/about">About Us</MobileNavLink>
+            <MobileNavLink href="/services">Services & Use Cases</MobileNavLink>
             <MobileNavLink href="/contact">Contact</MobileNavLink>
           </div>
         )}
